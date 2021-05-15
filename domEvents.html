@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM events</title>
+  </head>
+  <body>
+    <h4>Demonstrating onClick</h4>
+    <div class="button-container">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+    </div>
+    <h4>Demonstrating mouseover and mouseOut</h4>
+    <h1 id="demo">Mouse over me</h1>
+    <h4>Demonstrating keyUp and keyDown</h4>
+    <input placeholder="type into me!" class="input-to-copy" />
+    <p class="p-to-copy-to">Nothing has happened yet.</p>
+    <script>
+      var btn = document.querySelector(".button-container");
+      btn.addEventListener("click", function () {
+        alert(`You clicked on button ${event.target.innerText}`);
+      });
+      document.getElementById("demo").addEventListener("mouseover", mouseOver);
+      document.getElementById("demo").addEventListener("mouseout", mouseOut);
+
+      function mouseOver() {
+        document.getElementById("demo").style.color = "red";
+      }
+
+      function mouseOut() {
+        document.getElementById("demo").style.color = "black";
+      }
+      const input = document.querySelector(".input-to-copy");
+      const paragraph = document.querySelector(".p-to-copy-to");
+
+      input.addEventListener("keyup", function () {
+        paragraph.innerText = input.value;
+      });
+
+      input.addEventListener("keydown", function myFunction() {
+        alert("You pressed a key inside the input field");
+      });
+    </script>
+  </body>
+</html>
